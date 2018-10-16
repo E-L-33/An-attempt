@@ -1,0 +1,8 @@
+{% extends 'blog/blog_list.html' %}
+{% block title %}文章分类{% endblock %}
+{# block nav_blog_active #}active{# endblock #}
+
+
+{% block blog_list_title %}
+    {{ type }}分类下共有{{ page_of_blogs.paginator.count }}篇文章
+{% endblock %}
