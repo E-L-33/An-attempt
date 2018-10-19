@@ -5,11 +5,13 @@
     EVIC|注册
 {% endblock %}
 
-{% block link %}{% endblock %}
-
-{% block nav_home_active %}active{% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'base-extend.css' %}">
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+{% endblock %}
 
 {% block content %}
+    <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-xs-4 col-xs-offset-4">

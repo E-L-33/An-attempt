@@ -13,39 +13,130 @@
 {% block nav_home_active %}active{% endblock %}
 
 {% block content %}
-    <h3 class="home-content">天涯里自会相逢</h3>
-    <!-- 图表容器 DOM -->
-    <div id="container"></div>
-    <div class="read_css">
-        <h3>今日阅读量排行</h3>
-        <ul>
-            {% for today_data in today_read_data %}
-                <li>
-                    <a href="{% url 'blog_detail' today_data.content_object.id %}">
-                        {{ today_data.content_object.title }}
-                    </a>
-                    ({{ today_data.read_num }})
-                </li>
-            {% empty %}
-                <h4>今日暂无阅读</h4>
-            {% endfor %}
-        </ul>
+
+    <!--固定背景图和上面的文本-->
+    <div id="background-content">
+        <div class="landing-text">
+            <h1>以努力对抗庸常</h1>
+            <span>还有想见的人和很多想做的事</span>>
+        </div>
     </div>
-    <div class="read_css">
-        <h3>7日阅读量排行</h3>
-        <ul>
-            {% for data_for_7_day in data_for_7_days %}
-                <li>
-                    <a href="{% url 'blog_detail' data_for_7_day.id %}">
-                        {{ data_for_7_day.title }}
-                    </a>
-                    ({{ data_for_7_day.read_num_sum }})
-                </li>
-            {% empty %}
-                <h4>7日暂无阅读</h4>
-            {% endfor %}
-        </ul>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="data-statistics"><h1>网站流量数据</h1></div>
+            </div>
+        </div>
+    
+        
+        <div class="row" >
+            <div class="col-md-5 col-md-offset-1">
+                <!-- 图表容器 DOM -->
+                <div id="container"></div>
+            </div>
+            <div class="col-md-4 col-md-offset-1">
+                <div>
+                  <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+                                七天热门阅读
+                            </a>
+                        </li>
+                        <li role="presentation" >
+                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                                今日热门阅读
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                                昨日热门阅读
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade" id="home">
+                            <ul>
+                                {% for today_data in today_read_data %}
+                                    <li>
+                                        <a href="{% url 'blog_detail' today_data.content_object.id %}">
+                                            {{ today_data.content_object.title }}
+                                        </a>
+                                        ({{ today_data.read_num }})
+                                    </li>
+                                {% empty %}
+                                    <h4>今日暂无阅读</h4>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="profile">
+                            <h3>--故障中--</h3>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade active in" id="messages">
+                            <ul>
+                                {% for data_for_7_day in data_for_7_days %}
+                                    <li>
+                                        <a href="{% url 'blog_detail' data_for_7_day.id %}">
+                                            {{ data_for_7_day.title }}
+                                        </a>
+                                        ({{ data_for_7_day.read_num_sum }})
+                                    </li>
+                                {% empty %}
+                                    <h4>7日暂无阅读</h4>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+
+        <!-- <div class="row">
+            <div class="col-xs-6"> -->
+                <!-- 图表容器 DOM -->
+                <!-- <div id="container"></div>
+            </div>
+            <div class="col-xs-6">
+                <div class="read_css">
+                    <h3>今日阅读量排行</h3>
+                    <ul>
+                        {% for today_data in today_read_data %}
+                            <li>
+                                <a href="{% url 'blog_detail' today_data.content_object.id %}">
+                                    {{ today_data.content_object.title }}
+                                </a>
+                                ({{ today_data.read_num }})
+                            </li>
+                        {% empty %}
+                            <h4>今日暂无阅读</h4>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="read_css">
+                    <h3>7日阅读量排行</h3>
+                    <ul>
+                        {% for data_for_7_day in data_for_7_days %}
+                            <li>
+                                <a href="{% url 'blog_detail' data_for_7_day.id %}">
+                                    {{ data_for_7_day.title }}
+                                </a>
+                                ({{ data_for_7_day.read_num_sum }})
+                            </li>
+                        {% empty %}
+                            <h4>7日暂无阅读</h4>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div> -->
     </div>
+
     <script>
         // 图表配置
         var options = {
@@ -77,4 +168,5 @@
         // 图表初始化函数
         var chart = Highcharts.chart('container', options);
     </script>
+
 {% endblock %}

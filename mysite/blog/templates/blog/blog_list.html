@@ -4,6 +4,7 @@
 {% block nav_blog_active %}active{% endblock %}
 
 {% block link %}
+    <link rel="stylesheet" href="{% static 'base-extend.css' %}">
     <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
 {% endblock %}
 
@@ -19,24 +20,27 @@
                     </div>
                     <div class="panel-body">
                         {% for blog in page_of_blogs %}
-                            <a href="{% url 'blog_detail' blog.pk %}">
-                                <h3>{{ blog.id }}、{{ blog.title }}</h3>
-                            </a>
+                            <div>
+                                <span class="label label-info pull-left" style="font-size:17px;">{{ blog.blog_type }}</span>
+                                <a href="{% url 'blog_detail' blog.pk %}">
+                                    <h3>&nbsp;&nbsp;{{ blog.title }}</h3>
+                                </a>
+                            </div>
                             <ul class="blog-info-description">
                                 <li><span class="glyphicon glyphicon-user"></span>&nbsp;{{ blog.author }}</li>
-                                <li><span class="glyphicon glyphicon-tags"></span>&nbsp;
-                                    <a href="{% url 'blog_with_type' blog.blog_type %}">{{ blog.blog_type }}</a>
-                                </li>
-                                <li><span class="glyphicon glyphicon-time"></span>：{{ blog.created_time|date:"Y-m-d H:n:s" }}</li>
+                                <!--<li><span class="glyphicon glyphicon-tags"></span>&nbsp;-->
+                                <!--    <a href="{% url 'blog_with_type' blog.blog_type %}">{{ blog.blog_type }}</a>-->
+                                <!--</li>-->
+                                <li><span class="glyphicon glyphicon-time"></span>：{{ blog.created_time|date:"Y-m-d H:i:s" }}</li>
                                 <li><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>&nbsp;{{ blog.get_read_num }}</li>
                             </ul>
-                            <p>{{ blog.content|striptags|truncatechars:120 }}</p>    
+                            <p>{{ blog.content|striptags|truncatechars:120|safe }}</p>
                             <!-- 当字符为英文时将truncatechars改为truncatewords  truncate:截断  striptags过滤文本中的代码显示-->
                         {% empty %}
                             <h1>-- 暂无博客，敬请期待 --</h1>
                         {% endfor %}
                     </div>
-                </div> 
+                </div>
 
                 <!-- 分页导航 -->
                 <div class="paginator" aria-label="Page navigation">
@@ -64,7 +68,7 @@
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
-                        
+
                         {# 下一页 #}
                         <li>
                             {% if page_of_blogs.has_next %}
@@ -81,36 +85,41 @@
 
             <!-- 右侧分类导航 -->
             <div class="hidden-xs col-sm-3 col-md-3">
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">博客分类</div>
-                    <div class="panel-body">
-                        <ul class="blog-types">
+                    <!--<div class="panel-body">-->
+                        <ul class="blog-types list-group">
                             {% for blog_type in blog_types %}
-                                <li><a href="{% url 'blog_with_type' blog_type.type_name %}">
-                                {{ blog_type.type_name }}({{ blog_type.blog_count }})</a></li>
+                                <li class="list-group-item">
+                                    <span class="badge">{{ blog_type.blog_count }}</span>
+                                    <a href="{% url 'blog_with_type' blog_type.type_name %}">
+                                        {{ blog_type.type_name }}
+                                    </a>
+                                </li>
                             {% empty %}     <!-- 值为空时 -->
                                 <li>暂无博客，敬请期待</li>
                             {% endfor %}
                         </ul>
-                    </div>
+                    <!--</div>-->
                 </div>
-                <div class="panel panel-default">
+                <div class="panel panel-info">
                     <div class="panel-heading">日期归档</div>
-                    <div class="panel-body">
-                        <ul>
+                    <!--<div class="panel-body">-->
+                        <ul  class="list-group">
                             {% for dates,counts in blog_date.items %}
-                                <li>
+                                <li class="list-group-item">
+                                    <span class="badge">{{ counts }}</span>
                                     <a href="{% url 'blog_with_date' dates.year dates.month %}">
-                                        {{ dates|date:"Y年m月" }}({{ counts }})
+                                        {{ dates|date:"Y年m月" }}
                                     </a>
                                 </li>
-                            {% endfor %} 
+                            {% endfor %}
                         </ul>
-                    </div>
+                    <!--</div>-->
                 </div>
             </div>
         </div>
     </div>
 
-    
+
 {% endblock %}

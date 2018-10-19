@@ -19,28 +19,43 @@
     {% block link %}{% endblock %}
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!--导航条-->
+    <div id="navbar-base" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'home' %}">
+                <a id="pad" class="navbar-brand" href="http://liuya.pythonanywhere.com/">
                     EVIC个人博客网站
                 </a>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            
+            
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
             </div>
-            
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="{% block nav_home_active %}{% endblock %}"><a href="{% url 'home' %}">首页</a></li>
-                    <li class="{% block nav_blog_active %}{% endblock %}"><a href="{% url 'blog_list' %}">博客</a></li>
-                    <li><a href="#">自语</a></li>
+            <div id="navbar-collapse" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav nav-extend">
+                    <li class="{% block nav_home_active %}{% endblock %}">
+                        <a id="pad" class="fa fa-home" href="{% url 'home' %}"> 
+                            <span class="glyphicon glyphicon-leaf"></span>&nbsp;首页</a>
+                    </li>
+                    <li class="{% block nav_blog_active %}{% endblock %}">
+                        <a id="pad" class="fa fa-pencil" href="{% url 'blog_list' %}"> 
+                            <span class="glyphicon glyphicon-align-left"></span>&nbsp;博客</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right nav-extend">
+                    <li><a id="pad" class="fa fa-sign-in" href="{% url 'login' %}">
+                        <span class="glyphicon glyphicon-log-in"></span>&nbsp;登录</a>
+                    </li>
+                    <li><a id="pad" class="fa fa-id-card" href="{% url 'register' %}">
+                    <span class="glyphicon glyphicon-inbox"></span> &nbsp;注册</a></li>
                 </ul>
             </div>
         </div>
     </div>
+
     {% block content %}{% endblock %}
     {% block script %}{% endblock %}
 

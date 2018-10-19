@@ -45,6 +45,6 @@ def week_hot_read_data():
     data_for_7_days = Blog.objects \
                           .filter(read_detail__read_time__lt=today, read_detail__read_time__gte=last_7_day) \
                           .values('id','title') \
-                          .annotate(read_num_sum=Sum('read_num')) \
+                          .annotate(read_num_sum=Sum('read_detail__read_num')) \
                           .order_by('-read_num_sum')
     return data_for_7_days[:7]

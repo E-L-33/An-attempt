@@ -9,6 +9,7 @@
     top:50%;
     transform: translate(-50%,-50%);*/
 }
+
 div#container{
     margin:0 auto;
     height:20em;
@@ -18,4 +19,38 @@ div#container{
 div.read_css{
     text-align: center;
     margin-top: 2em;
+}
+#background-content {
+    background: url(../static/images/gz.png) no-repeat center center fixed;
+    display: table;
+    height: 30em;
+    width: 100%;
+    position: relative;
+    background-size: cover;
+    margin-top:0px;
+}
+.landing-text {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.landing-text h1 {
+    font-size: 444%;
+    font-weight: 700;
+}
+.data-statistics{
+    text-align: center;
+    margin: 20px 0px 60px;
+    padding: 40px 0px;
+    border-bottom: 1px solid #ccc;
+    color: #fff;
+    text-shadow:2px 2px 33px #000;
+}
+div.tab-content {
+    text-align:center;
+}
+div.tab-content li{
+    list-style-type:none;
+    font-size:18px;
+    padding: 5% 0px 0px;
 }
