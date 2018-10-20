@@ -18,6 +18,9 @@ ul{
     padding: 20px;
     font-size: 18px;
 }
+#pad img{
+    padding: 0px;
+}
 a.navbar-brand {
     padding:11px 30px;
 }
@@ -67,6 +70,12 @@ div.read_css{
 .landing-text h1 {
     font-size: 444%;
     font-weight: 700;
+}
+.landing-text a {
+    color: black;
+}
+.landing-text a:hover{
+    color: #ccc;
 }
 .data-statistics{
     text-align: center;
