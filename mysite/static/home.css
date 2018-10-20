@@ -84,3 +84,107 @@ div.tab-content li{
     font-size:18px;
     padding: 5% 0px 0px;
 }
+.overlay {
+    background: linear-gradient(to top right, #ccc, #fff);
+    margin-top: 10em;
+    opacity: 0.9;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15em;
+}
+
+.empty-line{
+    margin-top: 5em;
+    margin-bottom: 5em;
+    width: 100%;
+    height: 1em;
+}
+/*Foot*/
+.CopyR{
+    background: #282828;
+    height: 300px;
+    /*width: 100%;*/
+    /*margin: 0;*/
+}
+.CopyRT{
+    background: #282828;
+    height: 250px;
+    width: 100%;
+    margin: 0;
+}
+.CopyRTC{
+    width: 70%;
+    height: 100%;
+    margin: 0 15% 0 15%;
+    /*background: #a7a7a7;*/
+}
+.CopyRTCT{
+    /*background: #7b7b7b;*/
+    border-bottom:0.5px solid #ffffff;
+}
+.CopyRTCT p{
+    margin: 0;
+    padding: 10px 0 10px 0;
+    color: #bbbbbb;
+}
+.CopyRTCT span{
+    font-weight: 900;
+    font-size: 30px;
+    color: #fefefe;
+    /*color: #000；*/
+}
+.CopyRTCLL{
+    width: 31%;
+    height: 168px;
+    padding: 2% 0 0 1%;
+    float: left;
+    /*background: #9d9d9d;*/
+}
+.CopyRTCLL p{
+    color: #727272;
+    font-size: small;
+}
+.CopyRTCLC{
+    width: 48%;
+    height: 168px;
+    padding: 2% 0 0 1%;
+    float: left;
+    /*background: #464646;*/
+}
+.CopyRTCLC p{
+    margin: 0;
+    color: #f8f8f8;
+}
+.CopyRTCLC span{
+    color: #a4a4a4;
+    font-size: small;
+}
+.CopyRTCLR{
+    width: 18%;
+    height: 168px;
+    padding: 2% 0 0 1%;
+    float: left;
+    /*background: #dcdcdc;*/
+}
+.CopyRTCLR img{
+    height: 150px;
+}
+.footer {
+    /*margin-top: 110px;*/
+    background: #171717;
+    width: 100%;
+    /*height: 15vm;*/
+    padding: 30px 0 30px 15%;
+}
+.footer p {
+    color: #7f7f7f;
+    /*text-align: center;*/
+    font-weight: bold;
+    font-size: 12px;
+    /*font-style: italic;*/
+    /*text-transform: uppercase;*/
+}
+
