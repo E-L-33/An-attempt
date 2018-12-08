@@ -1,6 +1,11 @@
-#Developing documents
+# Developing documents
 ------------------------------------
-###Modified version 2018/10/20
+### Modified version 2018/12/08 blog
+* 并无太大改动，规范
+* db-backup.sql是定期备份的mysql文件
+
+------------------------------------
+### Modified version 2018/10/20 master
 * 修改了首页布局和一些一些界面优化
 * 修改了登录和注册页面
 * 预计加入留言池，将个人记录的部分内容移入
@@ -8,6 +13,6 @@
 * 修复了七天热门阅读下文章后不能正确显示阅读数量的bug
 
 ------------
-###Initial Version 2018/10/16
+### Initial Version 2018/10/16 master
 完成了基础的网站建设，止步于ajax，还存在以下bug：
 * 计数和日期归档不能正常运行

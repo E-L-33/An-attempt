@@ -3,7 +3,7 @@ from django.core.paginator import Paginator #引入分页器
 from django.db.models import Count
 from django.contrib.contenttypes.models import ContentType
 from .models import Blog,Blog_Type
-from data_statistics.utils import data_statistics_once_read 
+from data_statistics.utils import data_statistics_once_read
 from comment.models import Comment
 from comment.forms import Comment_Form
 
@@ -13,7 +13,7 @@ def get_blog_list_common_method(request,blog_all_list):
     paginator = Paginator(blog_all_list,6)    #每6条分一页
     page_num = request.GET.get('page',1)    #获取url的页码参数（GET请求），默认为1
     page_of_blogs = paginator.get_page(page_num)    #得到每一页的具体内容
-    # 显示临近的5页和首尾页   最终优化为只显示五格  
+    # 显示临近的5页和首尾页   最终优化为只显示五格
     is_num = page_of_blogs.number    #获取当前页码
     num_count = page_of_blogs.paginator.page_range[-1]    #获取最大页码数
     better_paginator = list(range(max(is_num-2,1),min(num_count,is_num+2)+1))
@@ -69,7 +69,7 @@ def blog_with_type(request,blog_with_type):
 
 # 日期归档
 def blog_with_date(request,year,month):
-    blog_all_list = Blog.objects.filter(created_time__year=year,created_time__month=month)    
+    blog_all_list = Blog.objects.filter(created_time__year=year,created_time__month=month)
     context = get_blog_list_common_method(request, blog_all_list)
     context['blog_date_title'] = "%d年%d月" %(year,month)
     return render(request,'blog/blog_with_date.html',context)

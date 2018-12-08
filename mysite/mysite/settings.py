@@ -25,7 +25,7 @@ SECRET_KEY = ')#+)9(*_*lny=h$4(updtvu4u)pd=l&%i21=fd_r(v^&e3pol8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['liuya.pythonanywhere.com']
 
 
 # Application definition
@@ -85,27 +85,27 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         "NAME":'LIUYA$default',
-#         "USER":'LIUYA',
-#         "PASSWORD":'syxzczg_',
-#         "HOST":'LIUYA.mysql.pythonanywhere-services.com',
-#         "PORT":'3306',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        "ENGINE":'django.db.backends.mysql',
-        "NAME":'mysite',
-        "USER":'root',
+        'ENGINE': 'django.db.backends.mysql',
+        "NAME":'LIUYA$default',
+        "USER":'LIUYA',
         "PASSWORD":'syxzczg_',
-        "HOST":'127.0.0.1',
+        "HOST":'LIUYA.mysql.pythonanywhere-services.com',
         "PORT":'3306',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         "ENGINE":'django.db.backends.mysql',
+#         "NAME":'mysite',
+#         "USER":'root',
+#         "PASSWORD":'syxzczg_',
+#         "HOST":'127.0.0.1',
+#         "PORT":'3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -144,6 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
