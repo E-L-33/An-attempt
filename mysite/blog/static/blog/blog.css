@@ -21,9 +21,10 @@ ul.blog-info-description li{
     display: inline-block;
     margin-right: 1em;
 }
-div.blog-content{
-    text-indent: 2em;
-}
+/* div.blog-content{ */
+    /* text-indent: 2em;   */
+    /* 首行缩进 */
+/* } */
 div.paginator{
     text-align: center;
 }

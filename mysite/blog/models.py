@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericRelation
 from ckeditor_uploader.fields import RichTextUploadingField
+from mdeditor.fields import MDTextField
 from data_statistics.models import Read_Num_Expand_Method
 from data_statistics.models import Read_Detail
 
@@ -16,7 +17,8 @@ class Blog_Type(models.Model):
 class Blog(models.Model,Read_Num_Expand_Method):
 #   一片文章应该有【标题、正文、作者、创建时间、修改时间、类型、浏览量、点赞量】
     title = models.CharField(max_length=30)
-    content = RichTextUploadingField()
+    # content = RichTextUploadingField()
+    content = MDTextField()
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     read_num = models.IntegerField(default=0)
     read_detail = GenericRelation(Read_Detail)

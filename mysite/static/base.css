@@ -8,6 +8,20 @@ body{
 ul{
     list-style-type: none;
 }
+a:hover{
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    display: block;  /* 设置元素生成的框的类型 */
+    max-width: 100%;
+}
+
+img{
+    border-radius: 3px; /* 圆角 */
+}
 #navbar-base {
     margin: 0px;
     border: 0;
@@ -24,8 +38,7 @@ ul{
 a.navbar-brand {
     padding:11px 30px;
 }
-.fa {
-
+/* .fa {
     padding: 20px;
     font-size: 30px;
     color: #5E4485;
@@ -33,7 +46,7 @@ a.navbar-brand {
 }
 .fa:hover{
     color:blue;
-}
+} */
 
 .empty-line{
     margin-top: 5em;
@@ -56,4 +69,246 @@ a.navbar-brand {
     font-weight: bold;
     font-size: 12px;
 }
+button.close{
+    margin: 10px 20px 0 0;
+    font-size: 30px;
+}
 
+.nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:focus {
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-bottom: 1px solid #0c9;
+}
+
+ .nav-tabs.nav-justified>li>a:hover{
+    color: #4c5157;
+    background-color: transparent;  /* transparent	默认。背景颜色为透明。 */
+    border: none;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: #0c9;
+}
+ .nav-tabs.nav-justified>.active>a:hover{
+    color: #4c5157;
+    background-color: transparent;  /* transparent	默认。背景颜色为透明。 */
+    border: none;
+    border-bottom: 1px solid transparent;
+    border-bottom-color: #0c9;
+}
+
+
+.nav-tabs.nav-justified>li>a {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    border-bottom: 1px solid #999;
+    border-radius: 4px 4px 0 0;
+}
+
+.nav-tabs>li>a {
+    border: none;
+}
+
+.nav-tabs>li>a:hover {
+    border-color: none;
+}
+
+.nav>li>a:hover {
+    text-decoration: none;
+    background-color: #FFF;
+}
+
+.tab-content .tab-pane .input-group {
+    margin-bottom: 15px;
+}
+
+.modal-dialog.modal-sm {
+    width: 350px;
+    margin-top: 80px;
+}
+.modal-dialog.modal-sm.modal-content{
+    margin-top: 80px;
+}
+
+.content-cofig{
+    padding: 0 30px;
+}
+
+.form-group .login-desc{
+    margin-top: 10px;
+}
+
+.form-group .login-desc .auto-login{
+    font-size: 12px;
+    color: #555;
+}
+
+.form-group .login-desc a{
+    color: #ccc;
+}
+
+.form-group .login-desc a:hover {
+    color: #23527c;
+}
+
+
+.form-group .btn{
+    margin: 10px auto;
+}
+
+.fast-title {
+    line-height: 30px;
+    text-align: center;
+}
+.fast-title .line {
+    display: inline-block;
+    width: 38%;
+    border-top: 1px solid #ccc ;
+}
+.fast-title .wrap {
+    color: #686868;
+    vertical-align: -4px;
+}
+.fast-behave .fast-body{
+    font-size: 20px;
+    text-align: center;
+}
+.fast-behave .fast-body .fa{
+    margin-left: 15px;
+}
+
+.fast-behave .fast-body .fa:first-child{
+    margin-left: 0;
+}
+
+.fast-behave .fast-body .fa-qq{
+    color: rgba(62, 137, 251, 0.5);
+}
+
+.fast-behave .fast-body .fa-wechat{
+    color: rgba(92, 184, 92, 0.5);
+}
+
+.fast-behave .fast-body .fa-weibo{
+    color: rgba(233, 40, 22, 0.5);
+}
+
+.fast-behave .fast-body .fa-facebook{
+    color: rgba(52, 88, 154, 0.5);
+}
+
+.register-info{
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+}
+
+
+.white {
+    color: #606060;
+    border: solid 1px #b7b7b7;
+    background: #fff;
+    background: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#ededed));
+    background: -moz-linear-gradient(top,#fff,#ededed);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#ededed');
+}
+.bigrounded {
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+.button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 16px/100% 'Microsoft yahei',Arial,Helvetica,sans-serif;
+    padding: .4em 2em .55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em;
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    margin-left:50px;
+}
+
+.outer {
+    position: relative;
+    /*margin: 20px auto;*/
+    width: 100%;
+    height: 30px;
+    line-height: 28px;
+    border: 1px solid #ccc;
+    background: #ccc9c9;
+    font-size: 12px;
+    margin: auto;
+    float:left;
+}
+
+.outer span, .filter-box, .inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.outer span {
+    display: block;
+    padding: 0 0 0 36px;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+}
+
+.txtRoll {
+    background-image: linear-gradient(to right,black,black, white,black,black, white,black);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-background-size: 200% 100%;
+    animation: bgp 3s infinite linear;
+}
+
+@-webkit-keyframes bgp {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.filter-box {
+    width: 0;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.5);
+    z-index: 9;
+}
+
+.outer.act span {
+    padding: 0 36px 0 0;
+}
+
+.inner {
+    width: 36px;
+    height: 28px;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+    font-family: "宋体";
+    z-index: 10;
+    font-weight: bold;
+    color: #929292;
+}
+
+.outer.act .inner {
+    color: rgba(255, 0, 0, 0.5);
+}
+
+.outer.act span {
+    z-index: 99;
+}

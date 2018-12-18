@@ -2,6 +2,8 @@ from django.shortcuts import render,get_object_or_404
 from django.core.paginator import Paginator #引入分页器
 from django.db.models import Count
 from django.contrib.contenttypes.models import ContentType
+import markdown
+
 from .models import Blog,Blog_Type
 from data_statistics.utils import data_statistics_once_read
 from comment.models import Comment
@@ -13,6 +15,9 @@ def get_blog_list_common_method(request,blog_all_list):
     paginator = Paginator(blog_all_list,6)    #每6条分一页
     page_num = request.GET.get('page',1)    #获取url的页码参数（GET请求），默认为1
     page_of_blogs = paginator.get_page(page_num)    #得到每一页的具体内容
+    for blog in page_of_blogs:
+        blog.content = markdown.markdown(blog.content)
+
     # 显示临近的5页和首尾页   最终优化为只显示五格
     is_num = page_of_blogs.number    #获取当前页码
     num_count = page_of_blogs.paginator.page_range[-1]    #获取最大页码数
@@ -26,19 +31,6 @@ def get_blog_list_common_method(request,blog_all_list):
         if num_count-is_num >= 4:
             better_paginator.insert(-1,"...")
 
-    '''
-    # 获取博客分类的博客数量
-    Blog_Type.objects.annotate(blog_count = Count('blog'))
-    #blog为Blog_Type关联的Blog的小写,blog_count为自定义的变量名   代码最终执行为SQL语句
-
-    #效果等于以下代码
-    blog_types = Blog_Type.objects.all()
-    blog_type_list = []
-    for blog_type in blog_types:
-        blog_type.blog_count = Blog.objects.filter(blog_type=blog_type).count()    #给每一个blog_type类添加属性
-        blog_type_list.append(blog_type)
-    context['blog_types'] = blog_type_list
-    '''
     # 获取时间归档的博客数量
     blog_dates = Blog.objects.dates('created_time','month',order="DESC") #得到的是一个可迭代对象
     blog_date_list = {}
@@ -82,6 +74,8 @@ def blog_detail(request, Blog_pk):
     blog_ct = ContentType.objects.get_for_model(Blog)
     # blog_ct是<class 'django.contrib.contenttypes.models.ContentType'>类型  blog_ct.model是<class 'str'>
     comments = Comment.objects.filter(content_type=blog_ct,object_id=Blog_pk)
+
+    blog.content = markdown.markdown(blog.content)
 
 
     context = {}

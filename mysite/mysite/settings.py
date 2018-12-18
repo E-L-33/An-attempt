@@ -25,7 +25,8 @@ SECRET_KEY = ')#+)9(*_*lny=h$4(updtvu4u)pd=l&%i21=fd_r(v^&e3pol8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['liuya.pythonanywhere.com']
+# ALLOWED_HOSTS = ['liuya.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -38,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'mdeditor',
     'ckeditor_uploader',
     'blog',
     'data_statistics',
-    'comment',
+    'comment'
 ]
 
 MIDDLEWARE = [
@@ -85,27 +87,27 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        "NAME":'LIUYA$default',
-        "USER":'LIUYA',
-        "PASSWORD":'syxzczg_',
-        "HOST":'LIUYA.mysql.pythonanywhere-services.com',
-        "PORT":'3306',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         "ENGINE":'django.db.backends.mysql',
-#         "NAME":'mysite',
-#         "USER":'root',
+#         'ENGINE': 'django.db.backends.mysql',
+#         "NAME":'LIUYA$default',
+#         "USER":'LIUYA',
 #         "PASSWORD":'syxzczg_',
-#         "HOST":'127.0.0.1',
+#         "HOST":'LIUYA.mysql.pythonanywhere-services.com',
 #         "PORT":'3306',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        "ENGINE":'django.db.backends.mysql',
+        "NAME":'mysite',
+        "USER":'root',
+        "PASSWORD":'1',
+        "HOST":'127.0.0.1',
+        "PORT":'3306',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -143,8 +145,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
@@ -168,7 +170,7 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-# media
+# media媒体文件的路径配置
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
