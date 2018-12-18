@@ -1,11 +1,14 @@
 from django import forms
 from ckeditor.widgets import CKEditorWidget
+# from mdeditor.widgets import MDEditorWidget
+# from mdeditor.fields import MDTextFormField
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import ObjectDoesNotExist
 
 class Comment_Form(forms.Form):
     object_id = forms.IntegerField(widget=forms.HiddenInput)
     content_type = forms.CharField(widget=forms.HiddenInput)
+    # comment_text = MDTextFormField()
     comment_text = forms.CharField(widget=CKEditorWidget(config_name='comment_ckeditor'),
                                     error_messages={'required':'评论内容不能为空'})
 
