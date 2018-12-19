@@ -10,3 +10,4 @@ PyMySQL==0.8.1
 pytz==2018.4
 django-mdeditor==0.1.9
 Markdown==3.0.1
+django-suit==0.2.26
