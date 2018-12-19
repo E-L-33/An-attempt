@@ -15,26 +15,75 @@ div.blog p.blog-info{
 
 ul.blog-info-description{
     list-style-type: none;
-    margin-bottom: 1em;
+    /* padding-bottom: 10px;
+    border-bottom: 1px solid #99a2aa; */
 }
 ul.blog-info-description li{
+    font-size: 0.6em;
     display: inline-block;
-    margin-right: 1em;
+    /* margin-right: 0.6em; */
+    color: #999;
+}
+ul.blog-info-description span{
+    margin: 0 0.3em 0 0.3em;
+}
+ul.blog-info-description li a{
+    /* padding: 10px 5px; */
+    color: #99a2aa;
+}
+div.content-detail{
+    background: #FFF;
+}
+div.blog-detail-title h1{
+    /* color: #99a2aa; */
+    line-height: 1.5;
+    font-size: 1.5em;
 }
 div.blog-content{
-    text-indent: 2em;
+    text-indent: 2em; /* 首行缩进 */
 }
 div.paginator{
     text-align: center;
+}
+div.blog-comment-detail{
+    background: #FFF;
+    margin-top: 3em;
 }
 div.comment-area{
     margin-top: 2em;
     /*border: 1px dashed #ccc;
     padding: 2em;*/
 }
-h3.comment-area-title{
+h1.comment-area-title{
     border-bottom: 1px solid #ccc;
     padding-bottom: 0.6em;
+}
+div.comment-user p,div.comment-user span{
+    color: #6d757a;
+    font-weight: bold;
+}
+div.comment-detail{
+    /* background: #eee; */
+    /* border: 1px solid #cccccc; */
+    /* padding: 10px 10px 5px 15px; */
+}
+div.comment-foot{
+
+}
+div.comment-foot span{
+    line-height: 26px;
+    color: #99a2aa;
+    font-size: 0.6em;
+    margin-right: 15px;
+    /* border-radius: 4px; */
+}
+div.comment-foot a{
+    padding: 10px 5px;
+    color: #99a2aa;
+}
+div.comment-foot a:hover{
+    color: #00a1d6;
+    background: #e5e9ef;
 }
 div.django-ckeditor-widget {
     width: 100%;

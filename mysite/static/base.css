@@ -3,7 +3,16 @@
     padding:0;
 }
 body{
-    margin-top: 70px!important;
+    margin-top: 80px!important;
+    background: url('./images/bg.png');
+
+    /* background: url('./images/background.jpg') no-repeat fixed center; */
+
+    /* background-size: 100%; */
+    /* fixed 当页面的其余部分滚动时，背景图像不会移动。 */
+    /* background: url("./images/316209647.jpg") no-repeat fixed;
+    background-size: 60%;
+    background-position: -50% 0; */
 }
 ul{
     list-style-type: none;
@@ -17,10 +26,11 @@ a{
 img{
     display: block;  /* 设置元素生成的框的类型 */
     max-width: 100%;
-}
-
-img{
     border-radius: 3px; /* 圆角 */
+}
+h1{
+    line-height: 1.5;
+    font-size: 1.5em;
 }
 #navbar-base {
     margin: 0px;
@@ -75,6 +85,7 @@ button.close{
 }
 
 .nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:focus {
+    color: #c9302c;
     font-size: 18px;
     font-weight: bold;
     border: none;
@@ -82,14 +93,15 @@ button.close{
 }
 
  .nav-tabs.nav-justified>li>a:hover{
-    color: #4c5157;
+    color: #c9302c;
     background-color: transparent;  /* transparent	默认。背景颜色为透明。 */
     border: none;
     border-bottom: 1px solid transparent;
     border-bottom-color: #0c9;
 }
  .nav-tabs.nav-justified>.active>a:hover{
-    color: #4c5157;
+    /* color: #4c5157; */
+    color: #c9302c;
     background-color: transparent;  /* transparent	默认。背景颜色为透明。 */
     border: none;
     border-bottom: 1px solid transparent;

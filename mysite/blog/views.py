@@ -77,7 +77,6 @@ def blog_detail(request, Blog_pk):
 
     blog.content = markdown.markdown(blog.content)
 
-
     context = {}
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last()
     context['blog'] = blog

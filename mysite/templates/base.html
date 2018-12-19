@@ -137,8 +137,8 @@
     <div id="navbar-base" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a id="pad" class="navbar-brand" href="http://liuya.pythonanywhere.com/">
-                    EVIC个人博客网站
+                <a id="pad" class="navbar-brand" href="{% url 'home' %}">
+                    liuya'blog
                 </a>
 
 
@@ -152,22 +152,30 @@
                 <ul class="nav navbar-nav nav-extend">
                     <li class="{% block nav_home_active %}{% endblock %}">
                         <a id="pad" href="{% url 'home' %}">
-                            <span class="glyphicon glyphicon-leaf"></span>&nbsp;首页</a>
+                            <span class="glyphicon glyphicon-leaf"></span>&nbsp;index</a>
                     </li>
-                    <li class="{% block nav_blog_active %}{% endblock %}">
+                    <li class="{% block nav_TS_active %}{% endblock %}">
                         <a id="pad" href="{% url 'blog_list' %}">
-                            <span class="glyphicon glyphicon-align-left"></span>&nbsp;博客</a>
+                            <i class="fa fa-hashtag"></i>&nbsp;Technology Stack</a>
+                    </li>
+                    <li class="{% block nav_in_active %}{% endblock %}">
+                        <a id="pad" href="{% url 'blog_list' %}">
+                            <i class="fa fa-lightbulb-o"></i>&nbsp;idea·notes</a>
+                    </li>
+                    <li class="{% block nav_Share_active %}{% endblock %}">
+                        <a id="pad" href="{% url 'blog_list' %}">
+                            <i class="fa fa-share-alt-square"></i>&nbsp;Share</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right nav-extend" id="mylogin">
                     <li>
                         <a data-toggle="modal" href="#login">
-                            <span class="glyphicon glyphicon-log-in"></span>&nbsp;登录
+                            <span class="glyphicon glyphicon-log-in"></span>&nbsp;login
                         </a>
                     </li>
                     <li>
                         <a data-toggle="modal" href="#login">
-                            <span class="glyphicon glyphicon-inbox"></span> &nbsp;注册
+                            <span class="glyphicon glyphicon-inbox"></span> &nbsp;register
                         </a>
                     </li>
                     <!-- <li><a id="pad" class="fa fa-sign-in" href="{% url 'login' %}">
@@ -195,7 +203,7 @@
     <div class="empty-line"></div>
     <div class="CopyR">
         <div class="footer">
-            <p>CopyRight&copy; EVIC个人博客·记录·生活·学习</p>
+            <p>CopyRight&copy;2017-2018·EVIC个人博客·记录·生活·学习</p>
         </div>
     </div>
 </body>
