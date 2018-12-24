@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'blog',
     'data_statistics',
-    'comment'
+    'comment',
 ]
 
 MIDDLEWARE = [
@@ -140,9 +140,11 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False   # 设置为上海的时间关掉
 
-
+SUIT_CONFIG = {  # suit页面配置
+     'ADMIN_NAME': 'EVIC'  #登录界面提示
+}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 

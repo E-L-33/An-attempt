@@ -40,7 +40,7 @@ def home_bak(request):
 
 def login_in(request):
     if request.method == 'POST':
-        forms = Login_Form(request.POST)
+        forms = Login_Form(request.POST)   # 绑定表单数据
         if forms.is_valid():
             user = forms.cleaned_data['user']
             auth.login(request,user)

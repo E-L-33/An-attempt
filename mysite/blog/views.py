@@ -4,6 +4,7 @@ from django.db.models import Count
 from django.contrib.contenttypes.models import ContentType
 import markdown
 
+from .forms import MDEditorForm
 from .models import Blog,Blog_Type
 from data_statistics.utils import data_statistics_once_read
 from comment.models import Comment
@@ -69,6 +70,10 @@ def blog_with_date(request,year,month):
 #文章的具体内容页
 def blog_detail(request, Blog_pk):
     blog = get_object_or_404(Blog, pk=Blog_pk)
+    # blogdata = MDEditorForm({"content":blog.content})
+    # print(blogdata.as_p())
+    # blog.content = blogdata['content']
+
     read_cookies_key = data_statistics_once_read(request, blog)
 
     blog_ct = ContentType.objects.get_for_model(Blog)
@@ -78,6 +83,7 @@ def blog_detail(request, Blog_pk):
     blog.content = markdown.markdown(blog.content)
 
     context = {}
+    # context['content'] = blogdata.as_p()
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last()
     context['blog'] = blog
     context['next_blog'] = Blog.objects.filter(created_time__lt=blog.created_time).first()

@@ -42,6 +42,10 @@ div.blog-detail-title h1{
 div.blog-content{
     text-indent: 2em; /* 首行缩进 */
 }
+div.content-style{
+    padding: 0 1em 0 1em;
+    line-height: 1.5;
+}
 div.paginator{
     text-align: center;
 }

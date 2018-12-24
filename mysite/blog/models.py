@@ -16,7 +16,7 @@ class Blog_Type(models.Model):
 
 class Blog(models.Model,Read_Num_Expand_Method):
 #   一片文章应该有【标题、正文、作者、创建时间、修改时间、类型、浏览量、点赞量】
-    title = models.CharField(max_length=30)
+    title = models.CharField(max_length=120)
     # content = RichTextUploadingField()
     content = MDTextField()
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
