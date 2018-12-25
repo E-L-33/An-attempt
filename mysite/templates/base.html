@@ -30,8 +30,6 @@
     <link href="{% static 'base.css' %}" rel="stylesheet" >
     <script src="{% static 'js/slider.js' %}" charset="utf-8"></script>
 
-
-
     {% block link %}{% endblock %}
 </head>
 <body>
@@ -136,6 +134,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <!--导航条-->
     <div id="navbar-base" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -190,8 +192,10 @@
             </div>
         </div>
     </div>
-
+    {% include "menu.html" %}
+    <!-- <div style="margin-top: 80px!important;"></div> -->
     {% block content %}{% endblock %}
+
     {% block script %}{% endblock %}
     <script>
             $("#mylogin a:first").click(function(){
