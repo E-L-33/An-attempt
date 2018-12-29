@@ -17,10 +17,7 @@ body{
 ul{
     list-style-type: none;
 }
-a:hover{
-    text-decoration: none;
-}
-a{
+a,a:focus,a:hover{
     text-decoration: none;
 }
 img{

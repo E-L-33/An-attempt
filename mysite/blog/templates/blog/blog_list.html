@@ -4,117 +4,83 @@
 {% block nav_blog_active %}active{% endblock %}
 
 {% block link %}
-    <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/blog-list.css' %}">
 {% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-9 col-md-9">
-
-                <!-- 列表目录 -->
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        {% block blog_list_title %}文章列表(一共有{{page_of_blogs.paginator.count}}篇文章){% endblock %}
-                    </div>
-                    <div class="panel-body">
-                        {% for blog in page_of_blogs %}
-                            <div>
-                                <span class="label label-info pull-left" style="font-size:17px;">{{ blog.blog_type }}</span>
-                                <a href="{% url 'blog_detail' blog.pk %}">
-                                    <h3>&nbsp;&nbsp;{{ blog.title }}</h3>
-                                </a>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <!-- 巨幕 -->
+                <div class="jumbotron">
+                    <h1>
+                        <i class="fa fa-hashtag"></i>&nbsp;
+                        Technology Stack
+                    </h1>
+                    <p>
+                        我在怎么对文章进行分纠结很久,看了一些其他博客的分类方式,发现很多都是
+                        大分类加标签形式,但我并没有完整知识体系,分起来也是乱糟糟的,
+                        最后还是决定按照自己的<span>学习路径</span>来对文章做一个归档...
+                    </p>
+                    <p>&nbsp;</p>
+                </div>
+                <!-- 分类主体 -->
+                <div>
+                    <!-- 大分类 -->
+                    <div class="clearfix">
+                        <div class="fast-title row">
+                            <span class="line"></span>
+                            <span class="wrap">基本功</span>
+                            <span class="line"></span>
+                        </div>
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title clearfix">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                jkhdashkjadskjhadskjhasdkjh
+                                            </a>
+                                        </h4>
+                                    </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    </div>
+                                </div>
                             </div>
-                            <ul class="blog-info-description">
-                                <li><span class="glyphicon glyphicon-user"></span>&nbsp;{{ blog.author }}</li>
-                                <!--<li><span class="glyphicon glyphicon-tags"></span>&nbsp;-->
-                                <!--    <a href="{% url 'blog_with_type' blog.blog_type %}">{{ blog.blog_type }}</a>-->
-                                <!--</li>-->
-                                <li><span class="glyphicon glyphicon-time"></span>：{{ blog.created_time|date:"Y-m-d H:i:s" }}</li>
-                                <li><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>&nbsp;{{ blog.get_read_num }}</li>
-                            </ul>
-                            <p>{{ blog.content|striptags|truncatechars:120|safe }}</p>
-                            <!-- 当字符为英文时将truncatechars改为truncatewords  truncate:截断  striptags过滤文本中的代码显示-->
-                        {% empty %}
-                            <h1>-- 暂无博客，敬请期待 --</h1>
-                        {% endfor %}
+                        </div>
                     </div>
-                </div>
-
-                <!-- 分页导航 -->
-                <div class="paginator" aria-label="Page navigation">
-                    <ul class="pagination">
-                        {# 上一页 #}
-                        <li>
-                            {% if page_of_blogs.has_previous %}
-                                <a href="?page={{ page_of_blogs.previous_page_number }}" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            {% else %}
-                                <span aria-hidden="true">&laquo;</span>
-                            {% endif %}
-                        </li>
-
-                        {# 获取总页码  当前页面页码高亮   判断"..."不可点击#}
-                        {% for page_num in better_paginator %}
-                            {% if page_num == page_of_blogs.number %}
-                                <li class="active"><a href="?page={{ page_num }}"><span>{{ page_num }}</span></a></li>
-                            {% else %}
-                                {% if page_num == "..." %}
-                                    <li><span>{{ page_num }}</span></li>
-                                {% else %}
-                                    <li><a href="?page={{ page_num }}"><span>{{ page_num }}</span></a></li>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-
-                        {# 下一页 #}
-                        <li>
-                            {% if page_of_blogs.has_next %}
-                                <a href="?page={{ page_of_blogs.next_page_number }}" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            {% else %}
-                                <span aria-hidden="true">&raquo;</span>
-                            {% endif %}
-                        </li>
-                  </ul>
-                </div>
-            </div>
-
-            <!-- 右侧分类导航 -->
-            <div class="hidden-xs col-sm-3 col-md-3">
-                <div class="panel panel-info">
-                    <div class="panel-heading">博客分类</div>
-                    <!--<div class="panel-body">-->
-                        <ul class="blog-types list-group">
-                            {% for blog_type in blog_types %}
-                                <li class="list-group-item">
-                                    <span class="badge">{{ blog_type.blog_count }}</span>
-                                    <a href="{% url 'blog_with_type' blog_type.type_name %}">
-                                        {{ blog_type.type_name }}
-                                    </a>
-                                </li>
-                            {% empty %}     <!-- 值为空时 -->
-                                <li>暂无博客，敬请期待</li>
-                            {% endfor %}
-                        </ul>
-                    <!--</div>-->
-                </div>
-                <div class="panel panel-info">
-                    <div class="panel-heading">日期归档</div>
-                    <!--<div class="panel-body">-->
-                        <ul  class="list-group">
-                            {% for dates,counts in blog_date.items %}
-                                <li class="list-group-item">
-                                    <span class="badge">{{ counts }}</span>
-                                    <a href="{% url 'blog_with_date' dates.year dates.month %}">
-                                        {{ dates|date:"Y年m月" }}
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    <!--</div>-->
+                    <div>
+                        <div class="fast-title">
+                            <span class="line"></span>
+                            <span class="wrap">前&emsp;端</span>
+                            <span class="line"></span>
+                        </div>
+                        <!-- 每行四个 -->
+                        <div class="row">
+                            <div class="col-sm-3"><center>HTML</center></div>
+                            <div class="col-sm-3"><center>CSS</center></div>
+                            <div class="col-sm-3"><center>JavaScript</center></div>
+                            <div class="col-sm-3"><center>Bootstrap</center></div>
+                            <div class="col-sm-3"><center>Vue</center></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="fast-title">
+                            <span class="line"></span>
+                            <span class="wrap">Python</span>
+                            <span class="line"></span>
+                        </div>
+                        <!-- 每行四个 -->
+                        <div>
+                            <div class="col-sm-3"><center>Python基础</center></div>
+                            <div class="col-sm-3"><center>爬虫</center></div>
+                            <div class="col-sm-3"><center>Django</center></div>
+                            <div class="col-sm-3"><center>数据分析</center></div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>

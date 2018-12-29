@@ -1,7 +1,11 @@
 from django.contrib import admin
-from .models import Blog,Blog_Type
+from .models import Blog,Blog_Type,Source_Type
 
 # Register your models here.
+@admin.register(Source_Type)
+class Source_Admin(admin.ModelAdmin):
+    list_display = ('id','source_name')
+
 @admin.register(Blog)
 class Blog_Admin(admin.ModelAdmin):
     list_display = ('id','title','author','get_read_num','blog_type','created_time','last_update_time')
@@ -13,7 +17,7 @@ class Blog_Admin(admin.ModelAdmin):
 
 @admin.register(Blog_Type)
 class Blog_Type_Admin(admin.ModelAdmin):
-    list_display = ('id','type_name')
+    list_display = ('id','type_name','source_to')
     ordering = ('id',)
 
     def __str__(self):

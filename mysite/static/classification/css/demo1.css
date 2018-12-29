@@ -89,7 +89,7 @@
 	.grim {
 		display: grid;
 		position: fixed;
-		z-index: 1000;
+		z-index: 9999;
 		bottom: 0;
 		left: 0;
 		width: 100%;

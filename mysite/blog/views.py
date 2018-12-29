@@ -17,7 +17,13 @@ def get_blog_list_common_method(request,blog_all_list):
     page_num = request.GET.get('page',1)    #获取url的页码参数（GET请求），默认为1
     page_of_blogs = paginator.get_page(page_num)    #得到每一页的具体内容
     for blog in page_of_blogs:
-        blog.content = markdown.markdown(blog.content)
+        blog.content = markdown.markdown(blog.content,
+                                  extensions=[
+                                      'markdown.extensions.extra',
+                                      'markdown.extensions.codehilite',
+                                      'markdown.extensions.toc',
+                                  ])
+                                  # codehilite 是语法高亮拓展   toc 则允许我们自动生成目录
 
     # 显示临近的5页和首尾页   最终优化为只显示五格
     is_num = page_of_blogs.number    #获取当前页码
