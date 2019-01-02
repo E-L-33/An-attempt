@@ -256,12 +256,15 @@
                     <!--<div class="panel-body">-->
                         <ul class="blog-types list-group">
                             {% for blog_type in blog_types %}
-                                <li class="list-group-item">
-                                    <span class="badge">{{ blog_type.blog_count }}</span>
-                                    <a href="{% url 'blog_with_type' blog_type.type_name %}">
-                                        {{ blog_type.type_name }}
-                                    </a>
-                                </li>
+                                {% if blog_type.blog_count %}
+                                <!-- 因为提前挖坑挖好了,所以有的分类暂时没有文章,这里就让没有文章的分类不在这里显示 -->
+                                    <li class="list-group-item">
+                                        <span class="badge">{{ blog_type.blog_count }}</span>
+                                        <a href="{% url 'blog_with_type' blog_type.type_name %}">
+                                            {{ blog_type.type_name }}
+                                        </a>
+                                    </li>
+                                {% endif %}
                             {% empty %}     <!-- 值为空时 -->
                                 <li>暂无博客，敬请期待</li>
                             {% endfor %}

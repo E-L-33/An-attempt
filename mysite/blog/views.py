@@ -5,7 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 import markdown
 
 from .forms import MDEditorForm
-from .models import Blog,Blog_Type
+from .models import Blog,Blog_Type,Source_Type
 from data_statistics.utils import data_statistics_once_read
 from comment.models import Comment
 from comment.forms import Comment_Form
@@ -55,7 +55,19 @@ def get_blog_list_common_method(request,blog_all_list):
 #文章列表页面
 def blog_list(request):
     blog_all_list = Blog.objects.all()
+
+    source_types = Source_Type.objects.all()
+    # 获取源类型
+    types = []
+    for st in source_types:
+        type_to = Blog_Type.objects.filter(source_to=st.id)   # Queryset对象
+        types.append(type_to)
+
     context = get_blog_list_common_method(request, blog_all_list)
+    context['source_num'] = range(len(source_types))
+    context['source_types'] = source_types
+    context['types'] = types
+
     return render(request,'blog/blog_list.html',context)
 
 #按文章类型分类

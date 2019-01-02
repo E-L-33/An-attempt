@@ -21,66 +21,48 @@
                         我在怎么对文章进行分纠结很久,看了一些其他博客的分类方式,发现很多都是
                         大分类加标签形式,但我并没有完整知识体系,分起来也是乱糟糟的,
                         最后还是决定按照自己的<span>学习路径</span>来对文章做一个归档...
+                        <span>Unfinished,自定义过滤器解决</span>
                     </p>
                     <p>&nbsp;</p>
                 </div>
                 <!-- 分类主体 -->
                 <div>
                     <!-- 大分类 -->
-                    <div class="clearfix">
-                        <div class="fast-title row">
-                            <span class="line"></span>
-                            <span class="wrap">基本功</span>
-                            <span class="line"></span>
-                        </div>
-                        <div class="col-sm-10 col-sm-offset-1">
-                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingOne">
-                                        <h4 class="panel-title clearfix">
-                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                jkhdashkjadskjhadskjhasdkjh
-                                            </a>
-                                        </h4>
+                    {% for num in source_num %}
+                        <div class="clearfix">
+                            <div class="fast-title row">
+                                <span class="line"></span>
+                                <span class="wrap">{%for subject in source_types %}{%if forloop.counter0 == num %}{{subject}}{%endif%}{%endfor%}</span>
+                                <span class="line"></span>
+                            </div>
+                            {% load extend_filters %}
+
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <div class="panel-group" id="accordion{{ num }}" role="tablist" aria-multiselectable="true">
+                                    {% for ds in types|index:num %}
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" role="tab" id="heading{{ ds.type_name }}">
+                                            <h4 class="panel-title clearfix">
+                                                <a  class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion{{ num }}" href="#collapse{{ ds.type_name }}" aria-expanded="false" aria-controls="collapseOne">
+                                                    {{ ds.type_name }}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapse{{ ds.type_name }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{ ds.type_name }}">
+                                            <div class="panel-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                                                <hr>
+                                                Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                            </div>
+                                        </div>
                                     </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
+
+
                         </div>
-                    </div>
-                    <div>
-                        <div class="fast-title">
-                            <span class="line"></span>
-                            <span class="wrap">前&emsp;端</span>
-                            <span class="line"></span>
-                        </div>
-                        <!-- 每行四个 -->
-                        <div class="row">
-                            <div class="col-sm-3"><center>HTML</center></div>
-                            <div class="col-sm-3"><center>CSS</center></div>
-                            <div class="col-sm-3"><center>JavaScript</center></div>
-                            <div class="col-sm-3"><center>Bootstrap</center></div>
-                            <div class="col-sm-3"><center>Vue</center></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="fast-title">
-                            <span class="line"></span>
-                            <span class="wrap">Python</span>
-                            <span class="line"></span>
-                        </div>
-                        <!-- 每行四个 -->
-                        <div>
-                            <div class="col-sm-3"><center>Python基础</center></div>
-                            <div class="col-sm-3"><center>爬虫</center></div>
-                            <div class="col-sm-3"><center>Django</center></div>
-                            <div class="col-sm-3"><center>数据分析</center></div>
-                        </div>
-                    </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

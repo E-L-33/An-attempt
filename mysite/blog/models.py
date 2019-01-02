@@ -16,7 +16,7 @@ class Source_Type(models.Model):
 class Blog_Type(models.Model):
     """文章的类型,归于特定的源类型"""
     type_name = models.CharField(max_length=15)
-    source_to = models.ForeignKey(Source_Type,on_delete=models.DO_NOTHING,default=None)
+    source_to = models.ForeignKey(Source_Type,on_delete=models.DO_NOTHING,null=True,blank=True)
 
     def __str__(self):
         return self.type_name
